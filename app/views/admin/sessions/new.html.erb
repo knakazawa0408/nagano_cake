@@ -1,27 +1,50 @@
-
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<header>
+  <nav class="navbar navbar-expand-lg nav-light border-bottom">
+    <div class="container">
+      <%= link_to "NaganoCakes", root_path, class: "navbar-brand navbar-dark" %>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <%= link_to "About", about_path, class: "btn btn-outline-dark"%>
+          </li>
+          <li>
+            <%= link_to "商品一覧", about_path, class: "btn btn-outline-dark"%>
+          </li>
+          <li>
+            <%= link_to "新規登録", about_path, class: "btn btn-outline-dark"%>
+          </li>
+          <li>
+            <%= link_to "ログイン", about_path, class: "btn btn-outline-dark"%>
+          </li>
+        </ul>
+      </div>
     </div>
-  <% end %>
+  </nav>
+</header>
+<main>
+  <div class="container my-5">
+    <div class="row">
+      <div class="offset-sm-3 col-sm-6">
+        <h2>管理者ログイン</h2>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label : %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "ログイン" %>
+          </div>
+          <% end %>
+
+          <%= render "admin/shared/links" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+</main>
