@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row my-5">
-    <%= form_with model: @item, url: new_admin_item_path do |f| %>
+    <%= form_with model: @item, url: admin_items_path do |f| %>
         <h3>商品新規登録</h3>
     </div>
     <div class="row justify-content-center">
         <table class="new-form-table">
           <tbody>
             <tr>
-              <th><%= f.label :image, "商品画像"%></th>
+              <th>商品画像</th>
               <td><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
             <tr>
@@ -16,8 +16,8 @@
             </tr>
 
             <tr>
-              <th><%= f.label :introduction, "商品説明" %></th>
-              <td><%= f.text_area :intoroduction, class: "form-control" %></td>
+              <th>商品説明</th>
+              <td><%= f.text_area :introduction, class: "form-control" %></td>
             </tr>
 
             <tr>
@@ -27,12 +27,12 @@
 
             <tr>
               <th>税抜価格</th>
-              <td>  <%= f.text_field :price_without_tax, class: "form-control" %></td>
+              <td>  <%= f.text_field :price, class: "form-control" %></td>
             </tr>
 
             <tr>
               <th>販売ステータス</th>
-              <td><%= f.select :is_sales_status, [["販売中","false"], ["販売不可","true"]], include_blank: "--選択してください--" %></td>
+              <td><%= f.select :is_active, [["販売中","false"], ["販売不可","true"]], include_blank: "--選択してください--" %></td>
             </tr>
           </tbody>
         </table>
