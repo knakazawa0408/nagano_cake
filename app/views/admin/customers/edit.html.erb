@@ -1,0 +1,65 @@
+<div class="container">
+  <h3><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h3>
+
+<%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+
+  <div class="row">
+    <label class="col-lg-3">名前</label>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name,autoforcus: true, autocomplete: "last_name",  placeholder: "(姓)" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :first_name,autoforcus: true, autocomplete: "first_name",  placeholder: "(名)" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">フリガナ</label>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name_kana,autoforcus: true, autocomplete: "last_name_kana",  placeholder: "(セイ)" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :first_name_kana,autoforcus: true, autocomplete: "first_name_kana",  placeholder: "(メイ)" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">郵便番号（ハイフンなし）</label>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">住所</label>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"60" %>
+    </div>
+  </div><br>
+
+
+  <div class="row">
+    <label class="col-lg-3">電話番号（ハイフンなし）</label>
+    <div class="col-lg-3">
+      <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">メールアドレス</label>
+    <div class="col-lg-3">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">会員ステータス</label>
+    <div class="col-lg-3">
+      <%= f.select :is_deleted, [["有効","false"], ["退会","true"]], include_blank: "--選択してください--" %>
+    </div>
+  </div>
+
+  <%= f.submit "変更を保存", class: "btn btn-success text-right" %>
+
+<% end %>
+</div>

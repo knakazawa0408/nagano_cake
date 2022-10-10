@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "homes#top"
+  root to: "admin/homes#top"
   get "/homes/about" => "homes#about", as: "about"
 
   # 顧客用
