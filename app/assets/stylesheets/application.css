@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.headline{
+  font-family: 'Kaushan', cursive, sans-serif;
+  color: black;
+}
+
+.nav-item{
+  padding-right: 30px;
+}
+
