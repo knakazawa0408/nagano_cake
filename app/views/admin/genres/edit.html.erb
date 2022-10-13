@@ -1,14 +1,14 @@
-<main>
-  <div class="container">
+
+  <div class="container my-5">
     <div class="row">
-      <div class="offset-2">
-        <h3>ジャンル編集</h3>
+      <div class="offset-1">
+        <h3 class="bg-light">ジャンル編集</h3>
       </div>
     </div>
-    <%= form_with model: @genre, url: edit_admin_genre_path do |f| %>
+    <%= form_with model: @genre, url: admin_genre_path do |f| %>
     <div class="row my-5">
-      <div class="col-2">
-          <%= f.label :name, "ジャンル名"%>
+      <div class="col-2 font-weight-bold">
+          <label>ジャンル名</label>
         </div>
         <div class="col-3">
           <%= f.text_field :name %>
@@ -20,4 +20,3 @@
     </div>
     <% end %>
   </div>
-</main>

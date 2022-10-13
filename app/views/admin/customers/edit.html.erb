@@ -1,7 +1,7 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h3><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
 
   <div class="row">
     <label class="col-lg-3">名前</label>
@@ -20,13 +20,6 @@
     </div>
     <div class="col-lg-3">
       <%= f.text_field :first_name_kana,autoforcus: true, autocomplete: "first_name_kana",  placeholder: "(メイ)" %>
-    </div>
-  </div><br>
-
-  <div class="row">
-    <label class="col-lg-3">メールアドレス</label>
-    <div class="col-lg-3">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
   </div><br>
 
@@ -53,33 +46,20 @@
   </div><br>
 
   <div class="row">
-    <label class="col-lg-3">パスワード
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %></label>
+    <label class="col-lg-3">メールアドレス</label>
     <div class="col-lg-3">
-      <%= f.password_field :password, autocomplete: "encrypted_password" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
   </div><br>
-
 
   <div class="row">
-    <label class="col-lg-3">パスワード（確認用）</label>
+    <label class="col-lg-3">会員ステータス</label>
     <div class="col-lg-3">
-      <%= f.password_field :password_confirmation, autocomplete: "encrypted_password" %>
+      <%= f.select :is_deleted, [["有効","false"], ["退会","true"]], include_blank: "--選択してください--" %>
     </div>
-  </div><br>
-
-  <div class="actions">
-    <%= f.submit "新規登録", class: "btn btn-success" %>
   </div>
 
+  <%= f.submit "変更を保存", class: "btn btn-success text-right" %>
 
-  <h3>既に登録済みの方</h3>
-  <div class="col-sm-3">
-    <%- if controller_name != 'sessions' %>
-      <%= link_to "こちら", new_session_path(resource_name) %>
-    <% end %>
-    からログインしてください
-  </div>
 <% end %>
+</div>
