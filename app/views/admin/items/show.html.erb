@@ -1,30 +1,30 @@
 <div class="container">
   <div class="row my-5">
-    <h3 class="offset-1">商品詳細</h3>
+    <h3 class="offset-1 bg-light">商品詳細</h3>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <%= image_tag @item.image %>
+  <div class="row ">
+    <div class="col-5">
+      <%= image_tag @item.image, width: '70%'%>
     </div>
     <table>
       <tr>
-        <th>商品名</th>
+        <th width="200" height="50">商品名</th>
         <td><%= @item.name %></tr>
       </tr>
       <tr>
-        <th>商品説明</th>
+        <th height="50">商品説明</th>
         <td><%= @item.introduction%></td>
       </tr>
       <tr>
-        <th>ジャンル</th>
+        <th height="50">ジャンル</th>
         <td><%= @item.genre.name %></td>
       </tr>
       <tr>
-        <th>税込価格</br>(税抜価格)</th>
+        <th height="50">税込価格</br>(税抜価格)</th>
         <td><%= (@item.price).floor.to_s(:delimited, delimiter: ',') %>（<%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>）円</td>
       </tr>
       <tr>
-        <th>販売ステータス</th>
+        <th height="50">販売ステータス</th>
         <td>
           <% if @item.is_active == false %>
             販売中
@@ -35,5 +35,7 @@
       </tr>
     </table>
   </div>
-  <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success text-right" %>
+  <div class="offset-5">
+  <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success btn-lg text-right" %>
+  </div>
 </div>

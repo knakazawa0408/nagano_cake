@@ -1,8 +1,9 @@
 <div class="container">
-  <h3><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h3>
+  <div class="row mt-5 mb-3">
+    <h3 class="bg-light"><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h3>
+  </div>
 
 <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
-
   <div class="row">
     <label class="col-lg-3">名前</label>
     <div class="col-lg-3">
@@ -55,11 +56,17 @@
   <div class="row">
     <label class="col-lg-3">会員ステータス</label>
     <div class="col-lg-3">
-      <%= f.select :is_deleted, [["有効","false"], ["退会","true"]], include_blank: "--選択してください--" %>
+      <%= f.radio_button :is_deleted, :false %>
+      <%= f.label :is_deleted, "有効", {style: "display: inline-block;"} %>
+      <%= f.radio_button :is_deleted, :true %>
+      <%= f.label :is_deleted, "退会", {style: "display: inline-block;"} %>
     </div>
   </div>
 
-  <%= f.submit "変更を保存", class: "btn btn-success text-right" %>
-
+  <div class="row">
+    <div class="offset-3 col-lg-3">
+    <%= f.submit "変更を保存", class: "btn btn-success text-right" %>
+    </div>
+  </div>
 <% end %>
 </div>
