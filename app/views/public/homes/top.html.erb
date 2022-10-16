@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="background col center offset-3">
+      <p class="text">
+        ようこそ、ながのCAKEへ</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <h3>新着商品</h3>
+  </div>
+  <div class="row">
+    <% @items.each do |item| %>
+    <table class="col center" align="left">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to root_path do %>
+               <%= image_tag item.image, :size =>'180x180' %>
+              <% end %>
+            </td>
+          </tr>
+            <tr><td><%= item.name %></td></tr>
+            <tr><td><%= (item.price).floor.to_s(:delimited, delimiter: ',') %>円</td></tr>
+        </tbody>
+    </table>
+    <% end %>
+  </div>
+</div>
