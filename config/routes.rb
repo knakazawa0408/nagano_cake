@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     get "homes/top" => "homes/top"
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
   end
   # 管理者用
   # URL /admin/sign_in ...
