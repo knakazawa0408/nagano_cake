@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :customers, only: [:show, :edit, :update]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   # 管理者用
   # URL /admin/sign_in ...

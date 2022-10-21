@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row my-5">
+    <h3 class="offset-1 bg-light">配送先登録/一覧</h3>
+  </div>
+  <%= form_with model: @address, url: public_addresses_path do |f|%>
+  <div class="row">
+    <label class="col-lg-3">郵便番号（ハイフンなし）</label>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autofocus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">住所</label>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autofocus: true, :size=>"60" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">宛名</label>
+    <div class="col-lg-3">
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    <%= f.submit '新規登録' ,class: "col-2 btn btn-success " %>
+  </div>
+  <% end %>
+
+  <div class="row mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @addresses.each do |address| %>
+        <tr>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          <td>
+            <%= link_to "編集する", edit_public_address_path(address), class: "btn btn-success text-right" %>
+            <%= link_to "削除する", public_address_path(address), method: :DELETE, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger text-right" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

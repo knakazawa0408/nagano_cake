@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row my-5">
+    <h3 class="offset-1 bg-light">配送先編集</h3>
+  </div>
+  <%= form_with model: @address, url: public_address_path do |f|%>
+  <div class="row">
+    <label class="col-lg-3">郵便番号（ハイフンなし）</label>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code, autofocus: true %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">住所</label>
+    <div class="col-lg-6">
+      <%= f.text_field :address, autofocus: true, :size=>"60" %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <label class="col-lg-3">宛名</label>
+    <div class="col-lg-3">
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    <%= f.submit '変更内容を保存' ,class: "offset-3 col-2 btn btn-success " %>
+  </div>
+  <% end %>
+</div>
