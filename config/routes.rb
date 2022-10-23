@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :cart_item, only: [:index, :update, :destroy, :destroy_all, :create]
   end
   # 管理者用
   # URL /admin/sign_in ...
