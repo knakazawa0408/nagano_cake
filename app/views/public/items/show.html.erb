@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="offset-1">
+      <%= image_tag @item.get_image, width: '70%'%>
+    </div>
+    <div class="col-4">
+      <h3 class="font-weight-bold"><%= @item.name %></h3>
+      <p><%= @item.introduction %></p>
+      <h3><%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %><span style="font-size:16px;">円（税込）</span></h3>
+      <%= form_with model: @cart_item, url: public_cart_item_index_path do |f| %>
+      <%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
+        <%= f.submit "カートに入れる" ,class: "btn btn-success text-right" %>
+    <% end %>
+    </div>
+  </div>
+</div>
