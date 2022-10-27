@@ -14,10 +14,13 @@ Rails.application.routes.draw do
     get "customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    post "orders/confirm" => "orders#confirm", as: "confirm"
+    get "orders/complete" => "orders#complete", as: "complete"
     resources :customers, only: [:show, :edit, :update]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :orders, only:[:new, :create, :index, :show]
   end
   # 管理者用
   # URL /admin/sign_in ...
