@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "admin/homes#top"
+  root to: "public/homes#top"
   get "/homes/about" => "homes#about", as: "about"
 
   # 顧客用
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-    get "homes/top" => "homes/top"
+    get '/about' => 'homes#about'
     get "customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
