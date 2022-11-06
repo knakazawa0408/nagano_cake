@@ -13,11 +13,11 @@
         </tr>
       </thead>
       <tbody>
-      <% @order_details.each do |order_detail| %>
+      <% @orders.each do |order| %>
         <tr>
-          <td><%= order_detail.created_at %></td>
-          <td><%= order_detail.order.customer.last_name %></td>
-          <td><%= order_detail.amount %></td>
+          <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order) %></td>
+          <td><%= order.customer.last_name %></td>
+          <td><%= order.order_details.sum(:amount) %></td>
           <td></td>
         </tr>
       <% end %>

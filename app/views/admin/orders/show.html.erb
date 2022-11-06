@@ -1,8 +1,9 @@
 <div class="contaner">
-  <div class="row">
-    <h3>注文履歴詳細</h3>
+  <div class="row my-5">
+    <h3 class="offset-1 bg-light">注文履歴詳細</h3>
   </div>
-  <table>
+  <div class="col-7">
+  <table class="table">
     <tbody>
       <tr>
         <th>購入者</th>
@@ -19,7 +20,7 @@
       </tr>
       <tr>
         <th>配送先</th>
-        <td><%= @order.address %></td>
+        <td><%= @order.shipping_address %></td>
       </tr>
       <tr>
         <th>支払方法</th>
@@ -31,8 +32,9 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>商品名</th>
@@ -45,14 +47,20 @@
     <tbody>
       <% @order_details.each do |order_detail| %>
         <td><%= order_detail.item.name %></td>
-        <td><%= (order_detail.price).floor.to_s(:delimited, delimiter: ',') %></td>
-        <td><%= order_detail.quantity %></td>
-        <td><%= (order_detail.price * order_detail.quantity).floor.to_s(:delimited, delimiter: ',') %></td>
+        <td><%= (order_detail.total_price).floor.to_s(:delimited, delimiter: ',') %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= (order_detail.total_price * order_detail.amount).floor.to_s(:delimited, delimiter: ',') %></td>
+        <td>
+          <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
+            <%= f.select :making_status, options_from_collection_for_select(OrderDetail.all, :id, :making_status) %>
+            <%= f.submit '更新',class:"btn btn-success" %>
+          <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>
 
-  <table>
+  <table class="table">
     <tbody>
       <tr>
         <th>商品合計</th>

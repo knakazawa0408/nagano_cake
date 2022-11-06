@@ -40,6 +40,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id #商品idを注文商品idに代入
       @order_detail.amount = cart_item.amount #商品の個数を注文商品の個数に代入
       @order_detail.total_price = cart_item.item.price #消費税込みに計算して代入
+      # @order_detail.maiking_status = OrderDetail.maiking_statuses_i18n[:cannot]
       @order_detail.order_id =  @order.id #注文商品に注文idを紐付け
       @order_detail.save #注文商品を保存
     end #ループ終わり
@@ -50,9 +51,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_detail = @order.order_details
+    @total = 0
   end
 
   private
